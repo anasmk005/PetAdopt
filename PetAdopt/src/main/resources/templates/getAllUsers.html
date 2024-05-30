@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User List</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: url('https://example.com/jungle-background.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+    }
+    .container {
+      max-width: 800px;
+      margin: auto;
+      padding: 20px;
+      background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+      text-align: center;
+      margin-top: 50px; /* Margin at the top for spacing */
+    }
+    h1 {
+      color: #FFD700; /* Golden color for the title */
+      margin-bottom: 20px;
+      font-size: 2.5em;
+    }
+    table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0 15px; /* Space between rows */
+      margin-top: 20px;
+    }
+    th, td {
+      padding: 15px;
+      text-align: left;
+      border-bottom: 1px solid #555; /* Dark border color */
+      font-size: 1.1em;
+    }
+    th {
+      background-color: rgba(255, 165, 0, 0.8); /* Semi-transparent orange */
+    }
+    tr {
+      background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent black */
+    }
+    tr:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+    td:first-child {
+      padding-left: 20px; /* Extra space for the first column (ID) */
+    }
+    td + td {
+      padding-left: 20px; /* Space between columns */
+    }
+    .animal-icon {
+      width: 40px;
+      height: 40px;
+      margin-right: 10px;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1>User List</h1>
+  <table>
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Username</th>
+      <th>Email</th>
+      <th>Favorite Animal</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Use Thymeleaf to loop through the list of users -->
+    <tr th:each="user : ${users}">
+      <td th:text="${user.id}"></td>
+      <td th:text="${user.username}"></td>
+      <td th:text="${user.email}"></td>
+      <td>
+        <img th:src="@{/images/animals/{user.favoriteAnimal}.png(user.favoriteAnimal=${user.favoriteAnimal})}" class="animal-icon" />
+        <span th:text="${user.favoriteAnimal}"></span>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>

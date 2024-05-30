@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Liste des Animaux</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: url('../static/img/image1.jpg') no-repeat center center fixed;
+            background-size: cover;
+        }
+        .animal-card {
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .animal-card img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+        .card-deck {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+        .card-deck .animal-card {
+            flex: 0 0 30%;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+<img src="" th:src="@{/img/image1.jpg}" style="display: none;">
+<div class="container mt-5">
+    <h1 class="mb-4 text-white">Liste des Animaux</h1>
+    <div class="card-deck">
+        <!-- Animal Card 1 -->
+        <div class="card animal-card">
+            <img src="https://via.placeholder.com/150" class="card-img-top" alt="Photo de l'animal 1">
+            <div class="card-body">
+                <h5 class="card-title">Nom de l'animal 1</h5>
+                <p class="card-text"><strong>Espèce: </strong>Espèce de l'animal 1</p>
+                <p class="card-text"><strong>Race: </strong>Race de l'animal 1</p>
+                <p class="card-text"><strong>Âge: </strong>Âge de l'animal 1</p>
+                <p class="card-text"><strong>Sexe: </strong>Sexe de l'animal 1</p>
+                <p class="card-text">Description de l'animal 1</p>
+            </div>
+        </div>
+        <!-- Animal Card 2 -->
+        <div class="card animal-card">
+            <img src="https://via.placeholder.com/150" class="card-img-top" alt="Photo de l'animal 2">
+            <div class="card-body">
+                <h5 class="card-title">Nom de l'animal 2</h5>
+                <p class="card-text"><strong>Espèce: </strong>Espèce de l'animal 2</p>
+                <p class="card-text"><strong>Race: </strong>Race de l'animal 2</p>
+                <p class="card-text"><strong>Âge: </strong>Âge de l'animal 2</p>
+                <p class="card-text"><strong>Sexe: </strong>Sexe de l'animal 2</p>
+                <p class="card-text">Description de l'animal 2</p>
+            </div>
+        </div>
+        <!-- Animal Card 3 -->
+        <div class="card animal-card">
+            <img src="https://via.placeholder.com/150" class="card-img-top" alt="Photo de l'animal 3">
+            <div class="card-body">
+                <h5 class="card-title">Nom de l'animal 3</h5>
+                <p class="card-text"><strong>Espèce: </strong>Espèce de l'animal 3</p>
+                <p class="card-text"><strong>Race: </strong>Race de l'animal 3</p>
+                <p class="card-text"><strong>Âge: </strong>Âge de l'animal 3</p>
+                <p class="card-text"><strong>Sexe: </strong>Sexe de l'animal 3</p>
+                <p class="card-text">Description de l'animal 3</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Bootstrap JS, Popper.js, and jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

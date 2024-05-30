@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Signup</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background: url('../static/img/image1.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .container {
+      background-color: rgba(255, 255, 255, 0.8); /* Transparent background */
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      color: #000;
+      text-align: center;
+      width: 100%;
+      max-width: 400px; /* Limite la largeur maximale du formulaire */
+    }
+    input[type="text"], input[type="password"], input[type="email"] {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box; /* Assure que le padding est inclus dans la largeur totale */
+    }
+    input[type="submit"] {
+      background-color: #4A90E2;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%; /* Assure que le bouton occupe toute la largeur */
+    }
+    input[type="submit"]:hover {
+      background-color: #0C3D7C;
+    }
+  </style>
+</head>
+<body>
+<img src="" th:src="@{/img/image1.jpg}" style="display: none;">
+<div class="container">
+  <h1>Signup</h1>
+  <form th:action="@{/signup}" th:object="${user}" method="post">
+    <div>
+      <label for="nom">Nom:</label>
+      <input type="text" id="nom" th:field="*{nom}" required>
+    </div>
+    <div>
+      <label for="email">Email:</label>
+      <input type="email" id="email" th:field="*{email}" required>
+    </div>
+    <div>
+      <label for="motDePasse">Mot de passe:</label>
+      <input type="password" id="motDePasse" th:field="*{motDePasse}" required>
+    </div>
+    <div>
+      <input type="submit" value="Signup">
+    </div>
+  </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Formulaire Animal</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: url('../static/img/image1.jpg') no-repeat center center fixed;
+            background-size: cover;
+        }
+        .animal-form {
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .image-preview {
+            width: 150px;
+            height: 150px;
+            border: 1px solid #ddd;
+            margin-top: 10px;
+            display: none;
+        }
+        .image-preview img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+    </style>
+</head>
+<body>
+<img src="" th:src="@{/img/image1.jpg}" style="display: none;">
+<div class="container mt-5">
+    <h1 class="mb-4 text-white">Ajouter des Animaux</h1>
+    <form action="#" th:action="@{/}" th:object="${animalForm}" method="post" enctype="multipart/form-data">
+        <div id="animal-container"></div>
+        <div class="form-group">
+            <button type="button" class="btn btn-primary" onclick="addAnimal()">Ajouter un Animal</button>
+            <button type="submit" class="btn btn-success">Soumettre</button>
+        </div>
+    </form>
+</div>
+<!-- Bootstrap JS, Popper.js, and jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+    function addAnimal() {
+        var container = document.getElementById('animal-container');
+        var index = container.querySelectorAll('.animal-form').length;
+
+        var div = document.createElement('div');
+        div.classList.add('animal-form');
+        div.innerHTML = `
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="nom-${index}">Nom:</label>
+                    <input type="text" class="form-control" id="nom-${index}" name="animals[${index}].nom" />
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="espece-${index}">Espèce:</label>
+                    <input type="text" class="form-control" id="espece-${index}" name="animals[${index}].espece" />
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="race-${index}">Race:</label>
+                    <input type="text" class="form-control" id="race-${index}" name="animals[${index}].race" />
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="age-${index}">Âge:</label>
+                    <input type="number" class="form-control" id="age-${index}" name="animals[${index}].age" />
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="sexe-${index}">Sexe:</label>
+                    <select class="form-control" id="sexe-${index}" name="animals[${index}].sexe">
+                        <option value="Male">Mâle</option>
+                        <option value="Femelle">Femelle</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="photo-${index}">Photo:</label>
+                    <input type="file" class="form-control-file" id="photo-${index}" name="files" onchange="previewImage(event, ${index})" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="description-${index}">Description:</label>
+                <textarea class="form-control" id="description-${index}" name="animals[${index}].description"></textarea>
+        </div>
+        <div class="image-preview" id="image-preview-${index}">
+            <img id="image-${index}" />
+        </div>
+    `;
+
+        container.appendChild(div);
+    }
+
+    function previewImage(event, index) {
+        var reader = new FileReader();
+        reader.onload = function(){
+            var output = document.getElementById('image-' + index);
+            output.src = reader.result;
+            document.getElementById('image-preview-' + index).style.display = 'block';
+        };
+        reader.readAsDataURL(event.target.files[0]);
+    }
+</script>
+</body>
+</html>
